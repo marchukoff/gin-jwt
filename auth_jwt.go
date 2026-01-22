@@ -521,10 +521,10 @@ func (mw *GinJWTMiddleware) middlewareImpl(c *gin.Context) {
 	}
 
 	// For backwards compatibility since technically exp is not required in the spec but has been in gin-jwt
-	if claims["exp"] == nil {
-		mw.unauthorized(c, http.StatusBadRequest, mw.HTTPStatusMessageFunc(c, ErrMissingExpField))
-		return
-	}
+	// if claims["exp"] == nil {
+	// 	mw.unauthorized(c, http.StatusBadRequest, mw.HTTPStatusMessageFunc(c, ErrMissingExpField))
+	// 	return
+	// }
 
 	c.Set("JWT_PAYLOAD", claims)
 	identity := mw.IdentityHandler(c)
